@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
+}
+
+body {
+  background: transparent !important;
+  margin-top: 80px;
+}
+
+#bankingContainer {
+  background: #212529 !important;
+  border-radius: 27px;
+  min-height: 800px;
+  max-height: 800px;
+  display: none;
+}
+
+#ATMContainer {
+  background: rgba(0, 0, 0, 0.8) !important;
+  border-radius: 20px;
+  min-height: 800px;
+  max-height: 800px;
+  display: none;
+  border: 2px solid red;
+}
+
+#customerName {
+  opacity: 0.5;
+}
+#customerName:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+#logo {
+  opacity: 0.5;
+}
+
+#logo:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+.statement:hover {
+  background: rgba(150, 149, 149, 0.5) !important;
+}
+
+#v-pills-tabContent,
+#v-pills-tabContent-atm {
+  overflow-y: scroll;
+  min-height: 100%;
+}
+
+#v-pills-tabContent::-webkit-scrollbar-track,
+#v-pills-tabContent-atm::-webkit-scrollbar-track {
+  background-color: transparent;
+  border: none;
+}
+
+#v-pills-tabContent::-webkit-scrollbar-thumb,
+#v-pills-tabContent-atm::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border: none;
+}
+
+#v-pills-tabContent::-webkit-scrollbar,
+#v-pills-tabContent-atm::-webkit-scrollbar {
+  width: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: transparent;
+}
+
+.title {
+  color: white;
+  margin-bottom: 15px;
+  font-weight: bolder;
+  border-left: 2px solid #dcb714;
+}
+
+.content {
+  color: white;
+  font-size: 20px;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: rgb(0, 0, 0);
+  background-color: #dcb714;
+}
+
+#initiateWithdraw {
+  color: rgb(255, 255, 255);
+  background-color: #f1b03e;
+  border-color: transparent;
+  border-radius: 15px;
+  font-weight: bold;
+}
+#initiateWithdraw:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgba(8, 8, 8, 0.445);
+  border-color: transparent;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+#initiateDeposit {
+  color: rgb(255, 255, 255);
+  background-color: #f1b03e;
+  border-color: transparent;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+#initiateDeposit:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgba(8, 8, 8, 0.445);
+  border-color: transparent;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+#initiateTransfer {
+  color: rgb(255, 255, 255);
+  background-color: #f1b03e;
+  border-color: transparent;
+  border-radius: 15px;
+  font-weight: bold;
+}
+#initiateTransfer:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgba(8, 8, 8, 0.445);
+  border-color: transparent;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+#processCard {
+  color: rgb(255, 255, 255);
+  background-color: #f1b03e;
+  border-color: transparent;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+#processCard:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgba(8, 8, 8, 0.445);
+  border-color: transparent;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+#orderCardBtn {
+  color: rgb(255, 255, 255);
+  background-color: #f1b03e;
+  border-color: transparent;
+  border-radius: 15px;
+  font-weight: bold;
+}
+#orderCardBtn:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgba(8, 8, 8, 0.445);
+  border-color: transparent;
+  border-radius: 15px;
+  font-weight: bold;
+}
+#openSavings {
+  color: rgb(255, 255, 255);
+  background-color: #f1b03e;
+  border-color: transparent;
+  border-radius: 15px;
+  font-weight: bold;
+}
+#openSavings:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgba(8, 8, 8, 0.445);
+  border-color: transparent;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+.btn-primary {
+  color: rgb(255, 255, 255);
+  background-color: #f1b03e;
+  border-color: transparent;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgba(8, 8, 8, 0.445);
+  border-color: transparent;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+.btn-secondary {
+  color: rgb(255, 255, 255);
+  background-color: #064635;
+  border-radius: 15px;
+  border-color: transparent;
+  font-weight: bold;
+}
+
+.btn-secondary:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgba(8, 8, 8, 0.445);
+  border-radius: 15px;
+  border-color: transparent;
+  font-weight: bold;
+}
+
+#logoffbutton {
+  background-color: #dcb714;
+  color: rgb(255, 255, 255);
+  border-color: transparent;
+  border-radius: 15px;
+  opacity: 0, 5;
+}
+
+#logoffbutton:hover {
+  background-color: rgba(8, 8, 8, 0.445);
+  color: rgb(255, 255, 255);
+  border-color: transparent;
+  border-radius: 15px;
+  opacity: 1;
+}
+
+.small,
+small {
+  font-size: 95%;
+  font-weight: bolder;
+}
+
+#savingsBalance {
+  color: #28a745;
+}
+
+#moneyDeposit {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#moneyWithDraw {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}

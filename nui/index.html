@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Requi#DC143C meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="scripting/jquery-ui.css" rel="stylesheet">
+    <!--
+    <link rel="stylesheet" href="https://assets.pixelworldrp.com/fonts/pro.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/b-1.5.6/fc-3.2.5/kt-2.5.0/r-2.2.2/datatables.min.css"/>-->
+
+    <title>QBCore Banking</title>
+</head>
+
+<body>
+    
+    <div class="container" id="bankingContainer">
+
+       
+       
+        <div class="row">
+            <div class="col-3">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="images/logo.png" class="img-fluid" id="logo">
+                    
+                        </div>
+                      
+                    </div>
+                    
+                  
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="nav flex-column nav-pills p-2 shadow-lg p-3 mb-5 border border-dark" id="v-pills-tab" role="tablist" aria-orientation="vertical" style=" border-radius: 15px; height: 350px; border-color: white;">
+                                <a class="nav-link active m-1" id="bankingHome-tab" data-toggle="pill" href="#bankingHome" role="tab" aria-controls="bankingHome" aria-selected="true" style="color: white"><i class="bi bi-person-square"></i>  Hesap</a>
+                                <a class="nav-link m-1" id="bankingWithdraw-tab" data-toggle="pill" href="#bankingWithdraw" role="tab" aria-controls="bankingWithdraw" aria-selected="false" style="color: white"><i class="bi bi-bank"></i> Para Çekme</a>
+                                <a class="nav-link m-1" id="bankingDeposit-tab" data-toggle="pill" href="#bankingDeposit" role="tab" aria-controls="bankingDeposit" aria-selected="false" style="color: white"><i class="bi bi-coin"></i> Para Yatırma</a>
+                                <a class="nav-link m-1" id="bankingTransfer-tab" data-toggle="pill" href="#bankingTransfer" role="tab" aria-controls="bankingTransfer" aria-selected="false" style="color: white"><i class="bi bi-globe"></i> Para Transfer</a>
+                                <!-- <a class="nav-link m-1" id="bankingStatement-tab" data-toggle="pill" href="#bankingStatement" role="tab" aria-controls="bankingStatement" aria-selected="false" style= "color: white">Statement</a> -->
+                                <!-- <a class="nav-link m-1" id="bankingSavings-tab" style="display:none; color: white;" data-toggle="pill" href="#bankingSavings" role="tab" aria-controls="bankingSavings" aria-selected="false"><i class="bi bi-activity"></i> Yatırım Hesabı</a> -->
+                                <a class="nav-link m-1" id="bankingActions-tab" data-toggle="pill" href="#bankingActions" role="tab" aria-controls="bankingActions" aria-selected="false" style="color: white"><i class="bi bi-gear-fill"></i> Hesap Ayarları</a>
+                                <a class="nav-link m-1" id="bankingUserInfo-tab" data-toggle="pill" href="#bankingUserInfo" role="tab" aria-controls="bankingUserInfo" aria-selected="false" style="color: white"><i class="bi bi-person-bounding-box"></i> Hesap Bilgileri</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row mt-2">
+                        <div class="col-12">
+                            <div class="tab-pane fade" id="bankingUserInfo" aria-labelledby="bankingUserInfo-tab" style="background: #212529; color: white; border-radius: 15px">
+                                
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="row">
+                        <div class="col-12">
+                            <button class="btn btn-block" id="logoffbutton"><i class="bi bi-x-lg"></i> Çıkış</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
+                <!-- Content Area -->
+
+
+                <div class="tab-content p-2 shadow-lg" id="v-pills-tabContent" style="max-height:980px; border-radius: 25px;">
+
+                    <div class="tab-pane fade show active" id="bankingUserInfo" role="tabpanel" aria-labelledby="bankingUserInfo-tab" style="position: relative; top: 54px;">
+                        <div class="container-fluid p-2">
+                            <div class="row">
+                                <div class="col-12 title">
+                                    <h3  style="font-size: 35px;"><i class="bi bi-info-circle-fill"></i> Hesap Bilgileri </h3>
+                                </div>
+            
+                                <div class="col-12 content ">
+                                    <p style="text-align: center;"> <i class="bi bi-broadcast" style="font-size:100px;"></i> </p>
+                                    
+                                    <div class="card mb-3" style="background:#282f38; color: white; border-radius: 15px">
+                                        <div class="card-body">
+                                            <p class="card-text" style="color: white;"><small>
+                                                <i class="bi bi-journal-bookmark-fill"></i> Hesap İsmi: <span id="accountName"></span><br>
+                                                <i class="bi bi-body-text"></i> Hesap Numarası: <span id="accountNumber"></span><br>
+                    
+                                                    <i class="bi bi-cash"></i>  Geçerli Banka Parası: <span class="card-title" style="font-weight: bolder; color: #28a745;" id="currentBalance3"></span><br>
+                                                    <i class="bi bi-wallet2"></i> Geçerli Nakit Para:  <span class="card-title" style="font-weight: bolder; color: #28a745;" id="currentCashBalance3"></span>
+            
+                                                </span></small></p>
+                                              
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                        <!-- Content 2 -->
+
+
+                    <div class="tab-pane fade show active" id="bankingHome" role="tabpanel" aria-labelledby="bankingHome-tab" style="position: relative; top: 54px;">
+                        <div class="container-fluid p-2">
+                            <div class="row">
+                                <div class="col-12 title">
+                                    <h3  style="font-size: 35px;"><i class="bi bi-bookmarks-fill"></i> Hoşgeldin, <span id="customerName"></span></h3>
+                                </div>
+                            </div>
+                            <div class="row" id="successRow" style="display:none;">
+                                <div class="col-12">
+                                    
+                                    <div  class="alert alert-success" style="border-radius: 15px;" role="alert" id="successMessage"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="card mb-3" style="background:#282f38; color: white; border-radius: 15px">
+                                        <div class="card-header"><i class="bi bi-wallet-fill"></i> Banka Durumu</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="font-weight: bolder; color: #28a745;" id="currentBalance"></h5>
+                                            <p class="card-text" style="color: white;"> Çekilebilecek/Transfer Yapılabilecek Toplam Tutar</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="card mb-3" style="background:#282f38; color: white; border-radius: 15px">
+                                        <div class="card-header"><i class="bi bi-cash-stack"></i> Nakit Para Durumu:</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="font-weight: bolder; color: #28a745;" id="currentCashBalance"></h5>
+                                            <p class="card-text" style="color: white;">  Yatırılabilecek Toplam Tutar</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card mb-3" style="background:#282f38; border-radius: 15px;">
+                                        <div class="card-header" style="color: white"><i class="bi bi-activity"></i> Hızlı İşlemler</div>
+                                        <div class="card-body">
+                                            <p id="moneyDeposit" style="color: white;"><i class="bi bi-cash-stack"></i> Para Yatır</p>
+                                            <div class="container-fluid">
+                                                <div class="row m-1">
+                                                    <div class="col-4"><button class="btn btn-primary btn-block" data-action="deposit" data-amount="100"><i class="bi bi-plus-lg"></i> Yatır $100</button></div>
+                                                    <div class="col-4"><button class="btn btn-primary btn-block" data-action="deposit" data-amount="1000"><i class="bi bi-plus-lg"></i> Yatır $1,000</button></div>
+                                                    <div class="col-4"><button class="btn btn-primary btn-block" data-action="deposit" data-amount="10000"><i class="bi bi-plus-lg"></i> Yatır $10,000</button></div>
+                                                </div>
+                                                <br>
+                                                <hr>
+                                                <br>
+                                                <p id="moneyWithDraw" style="color: white;"><i class="bi bi-cash-stack"></i> Para Çek </p>
+                                                <div class="row m-1">
+                                                    <div class="col-4"><button class="btn btn-secondary btn-block" data-action="withdraw" data-amount="100"><i class="bi bi-plus-slash-minus"></i> Çek $100</button></div>
+                                                    <div class="col-4"><button class="btn btn-secondary btn-block" data-action="withdraw" data-amount="1000"><i class="bi bi-plus-slash-minus"></i> Çek $1,000</button></div>
+                                                    <div class="col-4"><button class="btn btn-secondary btn-block" data-action="withdraw" data-amount="10000"><i class="bi bi-plus-slash-minus"></i> Çek $10,000</button></div>
+                                                </div>
+                                                <!-- <div class="row m-1">
+                                                    <div class="col-6">
+                                                        <button class="btn btn-info btn-block" id="savingsQuicky1" style="display:none;" data-action="savingsdeposit" data-amount="10000">Transfer $10,000 from Bank to Savings</button>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <button class="btn btn-info btn-block" id="savingsQuicky2" style="display:none;" data-action="savingswithdraw" data-amount="10000">Transfer $10,000 from Savings to Bank</button>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="bankingWithdraw" role="tabpanel" aria-labelledby="bankingWithdraw-tab">
+                        <div class="container-fluid p-2" style="position: relative; top: 54px;">
+                            <div class="row">
+                                <div class="col-12 title">
+                                    <h3 style="font-size: 35px;"><i class="bi bi-arrows-angle-contract"></i> Hesabınıza Para Yatırın</h3>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-12" style="font-size: 12px; color: white; border-radius: 15px">
+                                    Withdrawal money from your bank account. To withdrawal money from your savings account, first you must transfer it.
+                                </div>
+                            </div> -->
+                            <div class="row" style="position: relative; top: 20px;">
+                                <div class="col-6">
+                                    <div class="card mb-3" style="background:#282f38b4; color: white; border-radius: 15px">
+                                        <div class="card-header"><i class="bi bi-wallet-fill"></i> Banka Durumu</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="font-weight: bolder; color: #28a745;" id="currentBalance1"></h5>
+                                            <p class="card-text" style="color: white;"> Çekilebilecek/Transfer Yapılabilecek Toplam Tutar</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="card mb-3" style="background:#282f38; color: white; border-radius: 15px">
+                                        <div class="card-header"><i class="bi bi-cash-stack"></i> Nakit Para Durumu</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="font-weight: bolder; color: #28a745;" id="currentCashBalance1"></h5>
+                                            <p class="card-text" style="color: white;"> Yatırılabilecek Toplam Tutar</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="position: relative; top: 20px;">
+                                <div class="col-12">
+                                    <div class="card mb-3" style="background:#282f38; color: white; border-radius: 15px">
+                                        <div class="card-body">
+                                            <div class="container-fluid">
+                                                <div class="row" id="withdrawError" style="display:none;">
+                                                    <div class="col-12">
+                                                        <div class="alert alert-danger" role="alert" id="withdrawErrorMsg">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-2">
+                                                    <div class="col-3 my-auto" style="font-size: 19px; color: white;"><label for="withdrawAmount"><small><i class="bi bi-arrow-up-left-square-fill"></i> Çekmek İstediğiniz Tutar</small></label></div>
+                                                    <div class="col-9"><input type="number" placeholder="$" class="form-control" id="withdrawAmount" name="withdrawAmount"></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="position: relative; top: 20px;">
+                                <div class="col-12 text-center"><button class="btn"  id="initiateWithdraw"><i class="bi bi-plus-lg"></i> Para Çek </button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="bankingDeposit" role="tabpanel" aria-labelledby="bankingDeposit-tab">
+                        <div class="container-fluid p-2" style="position: relative; top: 54px;">
+                            <div class="row">
+                                <div class="col-12 title">
+                                    <h3 style="font-size: 35px;"><i class="bi bi-arrows-move"></i> Hesabınızdan Para Çekin</h3>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-12" style="font-size: 12px; color: white; border-radius: 15px">
+                                    Deposit money into your bank account. To deposit money into your savings account, simply transfer it from your bank after your initial deposit.
+                                </div>
+                            </div> -->
+                            <div class="row" style="position: relative; top: 20px;">
+                                <div class="col-6">
+                                    <div class="card mb-3" style="background:#282f38b4; color: white; border-radius: 15px;">
+                                        <div class="card-header"><i class="bi bi-wallet-fill"></i> Banka Durumu</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="font-weight: bolder; color: #28a745;" id="currentBalance2"></h5>
+                                            <p class="card-text" style="color: white;"> Çekilebilecek/Transfer Yapılabilecek Toplam Tutar</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="card mb-3" style="background:#282f38b4; color: white; border-radius: 15px">
+                                        <div class="card-header"><i class="bi bi-cash-stack"></i> Nakit Para Durumu</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="font-weight: bolder; color: #28a745;" id="currentCashBalance2"></h5>
+                                            <p class="card-text" style="color: white;"> Yatırılabilecek Toplam Tutar</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="position: relative; top: 20px;">
+                                <div class="col-12">
+                                    <div class="card mb-3" style="background:#282f38b4; color: white; border-radius: 15px">
+                                        <div class="card-body">
+                                            <div class="container-fluid">
+                                                <div class="row" id="depositError" style="display:none;">
+                                                    <div class="col-12">
+                                                        <div class="alert alert-danger" role="alert" id="depositErrorMsg">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-2">
+                                                    <div class="col-3 my-auto" style="font-size: 19px; color: white;"><label for="depositAmount"><small><i class="bi bi-arrow-up-right-square-fill"></i> Yatırmak İstediğiniz Tutar</small></label></div>
+                                                    <div class="col-9"><input type="number" placeholder="$" class="form-control" id="depositAmount" name="depositAmount"></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="position: relative; top: 20px;">
+                                <div class="col-12 text-center"><button class="btn"  id="initiateDeposit"><i class="bi bi-plus-slash-minus"></i> Para Yatır </button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="bankingTransfer" role="tabpanel" aria-labelledby="bankingTransfer-tab">
+
+                        <div class="container-fluid p-2" style="position: relative; top: 54px;">
+                            <div class="row">
+                                <div class="col-12 title">
+                                    <h3 style="font-size: 35px;"><i class="bi bi-arrow-repeat"></i> Para Transferi</h3>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-12" style="font-size: 12px; color:white">Transfer money to another account simply by entering the dedicated number of that account and the amount to transfer.
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="col-12" style="position: relative; top: 20px;">
+                                    <div class="card mb-3" style="background:#282f38b4; color: white; border-radius: 15px;">
+                                        <div class="card-body">
+                                            <div class="container-fluid">
+                                                <div class="row" id="transferError" style="display:none;">
+                                                    <div class="col-12">
+                                                        <div class="alert alert-danger" role="alert" id="transferErrorMsg">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <!-- form -->
+                                                        <div class="container-fluid">
+                                                            <div class="row m-1">
+                                                                <div class="col-3 my-auto" style="font-size: 19px; color: white;"><label for="transferAcctNo"><small><i class="bi bi-person-video3"></i> Hesap Numarası</small></label></div>
+                                                                <div class="col-9"><input type="text" id="transferAcctNo" name="transferAcctNo" class="form-control"></div>
+                                                            </div>
+                                                            <div class="row m-1">
+                                                                <div class="col-3 my-auto" style="font-size: 19px; color: white;"><label for="transferAmount"><small><i class="bi bi-cash"></i> Transfer Edeceğiniz Miktar</small></label></div>
+                                                                <div class="col-9"><input type="number" id="transferAmount" name="transferAmount" class="form-control" placeholder="$"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-center" style="position: relative; top: 20px;">
+                                    <button class="btn" id="initiateTransfer"><i class="bi bi-arrow-down-up"></i> Transferi Tamamla</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="bankingStatement" role="tabpanel" aria-labelledby="bankingStatement-tab">
+                        <div class="container-fluid p-2">
+                            <div class="row">
+                                <div class="col-12 title">
+                                    <h3>Current Account Statement</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card bg-light mb-3">
+                                        <div class="card-body">
+                                            <table id="currentStatement" class="display" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Description</th>
+                                                        <th class="text-center">Withdrawn</th>
+                                                        <th class="text-center">Deposit</th>
+                                                        <th class="text-center">New Balance</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="currentStatementContents">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="bankingSavings" role="tabpanel" aria-labelledby="bankingSavings-tab">
+                        <div class="container-fluid p-2" style="position: relative; top: 54px;">
+                            <div class="row">
+                                <div class="col-12 title">
+                                    <h4 style="font-size: 35px;">Savings Account</h4>
+                                </div>
+                            </div>
+                            <div class="row" style="position: relative; top: 20px;">
+                                <div class="col-4" style="color: #00af17">
+                                    <div class="card mb-3" style="background:rgba(51, 51, 51, 0.8); color: white; min-height:150px;">
+                                        <div class="card-header"><i class="fad fa-fw fa-money-bill-wave"></i> Savings Account Balance:</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">&#36;&nbsp;<span id="savingsBalance"></span></h5>
+                                            <p class="card-text" style="font-size: 10px; color: white;">This is currently how much you have saved in your savings account</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-8">
+                                    <div class="card mb-3" style="background:rgba(51, 51, 51, 0.8); color: white;">
+                                        <div class="card-header">Savings Withdraw & Deposits</div>
+                                        <div class="card-body">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-4"><label for="savingsAction"><small>Action</small></label>
+                                                        <select name="savingsAction" id="savingsAction" class="form-control" style="font-size: 13px;">
+                                                        <option selected disabled value="def">Please Select</option>
+                                                        <option value="deposit">Deposit</option>
+                                                        <option value="withdraw">Withdrawal</option>
+                                                    </select>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <label for="savingsTAmount"><small>Amount</small></label>
+                                                        <input type="number" id="savingsTAmount" name="savingsTAmount" class="form-control" placeholder="$" style="font-size: 13px;">
+                                                    </div>
+                                                    <div class="col-4 my-auto">
+                                                        <button class="btn btn-block" id="makeSavingsTransfer" style="background-color: #28a745; font-size: 12px; color: white">Complete Request</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="position: relative; top: 60px">
+                            <div class="card mb-3" style="background:rgba(51, 51, 51, 0.8); color: white;">
+                                <div class="card-header">Savings Account Statement</div>
+                                <div class="card-body">
+                                    <table id="savingsStatement" class="display" style="width:100%">
+                                        <thead>
+                                            <tr style="font-size: 14px; color: white;">
+                                                <th>Date</th>
+                                                <th>Description</th>
+                                                <th class="text-center">Withdrawn</th>
+                                                <th class="text-center">Deposit</th>
+                                                <th class="text-center">New Balance</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="savingsStatementContents" style="font-size: 14px;">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="bankingActions" role="tabpanel" aria-labelledby="bankingActions-tab" style="position: relative; top: 54px;">
+                        <div class="container-fluid p-2">
+                            <div class="row">
+                                <div class="col-12 title">
+                                    <h3 style="font-size: 35px;"><i class="bi bi-person-lines-fill"></i> Hesap Ayarlarınızı bu kısımdan ayarlayabilirsiniz</h3>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-12 content" style="font-size: 12px;">
+                                    <p>From within the Account options section you are able to manage every aspect of your banking experience with QBCore Banks, from ordering a new debit card, changing your pins, and even create a savings account.</p>
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card mb-3" style="background:#282f38b4; color: white; border-radius: 15px;">
+                                        <div class="card-header" style="color: white"><i class="bi bi-credit-card"></i> Kredi Kartı Yönetimi</div>
+                                        <div class="card-body">
+                                            <!-- Card In-Active Container -->
+
+                                            <div class="container-fluid" id="cardInactive" style="display:none;">
+                                                <div class="row">
+                                                    <div class="col-12 content" style="font-size: 16px;">
+                                                        <p>IdleBank tarafından ücretsiz sağlanan kredi kartlarından birini sipariş edebilirsiniz...</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <button class="btn btn-block" id="orderCardBtn"><i class="bi bi-check2-square"></i> Kredi Kartı Sipariş Et</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <!-- Order Card Screen -->
+                                            <div class="container-fluid" id="cardOrdering" style="display:none;">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p>
+                                                        Yeni bir banka kartı sipariş etmek için öncelikle bir Kişisel Kimlik Numarası (PIN) belirlemeniz gerekir; bu, kartınızı ATM'lerde kullanmanıza olanak tanır.
+                                                    </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row" id="pinCreatorError" style="display:none;">
+                                                    <div class="col-12">
+                                                        <div class="alert alert-warning" role="alert" id="pinCreatorErrorMsg">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3 my-auto">
+                                                        <label for="cardPinNumber"><small><i class="bi bi-file-lock2-fill"></i> Şifreniz</small></label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <input type="password" maxlength="4" id="cardPinNumber" name="cardPinNumber" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-2">
+                                                    <div class="col-12 text-center "><button  id="processCard"><i class="bi bi-credit-card-fill"></i> Kart Sipariş Et</button></div>
+                                                </div>
+                                            </div>
+                                            <!-- Card Active Container -->
+                                            <div class="container-fluid" id="cardDetails" style="display:none;">
+                                                <div class="row">
+
+                                                    <div class="col-4">
+                                                        <div class="card text-white bg-info mb-3" id="debitCardPin" style="min-height:230px">
+                                                            <div class="card-header">Change Pin</div>
+                                                            <div class="card-body">Your pin is currently set.</div>
+                                                            <div class="card-footer">
+                                                                <button class="btn btn-primary btn-block" id="changePin">Change PIN</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-4">
+                                                        <div class="card text-white bg-dark mb-3" id="requestNewCard1" style="min-height:230px; display:block;">
+                                                            <div class="card-header">Request New Card</div>
+                                                            <div class="card-body">Current Active Card<br>
+                                                                <small><span id="cardType">Visa</span><br>
+                                                                        <span id="cardNumberShow">************3455</span></small>
+                                                            </div>
+                                                            <div class="card-footer">
+                                                                <button class="btn btn-primary btn-block" id="makeNewCardRequestBtn1">Make Request</button>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="card text-white bg-dark mb-3" id="requestNewCard2" style="min-height:230px; display:none;">
+                                                            <div class="card-header">Confirm Request</div>
+                                                            <div class="card-body"><small>By making this request your old card will be blocked.</small>
+
+                                                            </div>
+                                                            <div class="card-footer text-center">
+                                                                <button class="btn btn-success btn-sm" id="confirmCardRequest">Confirm</button> <button class="btn btn-danger btn-sm" id="cancelNewCardReq">Cancel</button>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="card text-white bg-success mb-3" id="requestNewCard3" style="min-height:230px; display:none;">
+                                                            <div class="card-header">Request Confirmed</div>
+                                                            <div class="card-body"><small>You have received a new card, and your previous one has been blocked.</small>
+
+                                                            </div>
+                                                            <div class="card-footer text-center">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-4">
+                                                        <div class="card text-white bg-success mb-3" id="debitCardStatus" style="min-height:230px">
+                                                            <div class="card-header">Card Unlocked</div>
+                                                            <div class="card-body">Your card is currently active.</div>
+                                                            <div class="card-footer">
+                                                                <button class="btn btn-primary btn-block" id="lockCard">Lock/Block Card</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" id="createNewPin" style="display:none;">
+                                                    <div class="col-12">
+                                                        <div class="card bg-light mb-3">
+                                                            <div class="card-header">Create a New Pin</div>
+                                                            <div class="card-body">
+                                                                <div class="container-fluid">
+                                                                    <div class="row" id="newPinReqMsgDiv" style="display:none;">
+                                                                        <div class="col-12">
+                                                                            <div class="alert alert-danger" role="alert" id="newPinReqMsg">
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3 my-aut"><label for="newPinNumber"><small>New Pin Number</small></label></div>
+                                                                        <div class="col-9"><input type="password" class="form-control" id="newPinNumber" name="newPinNumber"></div>
+                                                                    </div>
+                                                                    <div class="row mt-2">
+                                                                        <div class="col-12 text-center"><button class="btn btn-success" id="updateNewPin">Update Pin</button></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="savingAccountCreator" style="display:none;">
+                                <div class="col-12">
+                                    <div class="card mb-3" style="background:#282f38b4; color: white; border-radius: 15px">
+                                        <div class="card-header"><i class="bi bi-activity"></i> Savings Account Management</div>
+                                        <div class="card-body">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-12 content" style="font-size: 16px;">
+                                                        <p>You have not yet opened a savings account with QBCore Banks, click the button below to open a personal savings account, with a seperate account number and sort code.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <button class="btn btn-block mt-2"  id="openSavings"><i class="bi bi-activity"></i> Open Savings Account</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <p class="card-text"><small>This sections allows you to eaily manage your savings account.</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="scripting/external/jquery/jquery.js"></script>
+    <script src="scripting/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/b-1.5.6/fc-3.2.5/kt-2.5.0/r-2.2.2/datatables.min.js"></script>
+    <script src="qb-banking.js"></script>
+</body>
+
+</html>
